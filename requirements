@@ -1,8 +1,7 @@
 tqdm
-torch
 pandas
 numpy
 scikit_learn
 matplotlib
 torchsummary
-scipy
+torch==1.8.1
