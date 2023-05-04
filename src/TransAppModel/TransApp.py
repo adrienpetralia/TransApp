@@ -1,3 +1,13 @@
+#################################################################################################################
+#
+# @copyright : ©2023 EDF
+# @author : Adrien Petralia
+# @description : TransApp time series classifier
+# @component: src/TransAppModel/
+# @file : TransApp.py
+#
+#################################################################################################################
+
 import math
 import numpy as np
 
