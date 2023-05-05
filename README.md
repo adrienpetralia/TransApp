@@ -6,20 +6,9 @@
 
 <h1 align="center">A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series </h1>
 
-### Data
-The data used in this project comes from two sources:
-
-<ul>
-  <li>CER smart meter dataset from the ISSDA archive.</li>
-  <li>Private smart meter dataset provide by EDF (Electricité De France).</li>
-</ul> 
-
 ### Prerequisites 
-To download the preprocessed subsample of the CER dataset (data/label/ExogneDate) :
 
-<code>cd data</code>
-
-Copy and paste the data from the link drive folder indicate in the README.md file.
+Python version : <code> >= Python 3.7 </code>
 
 Overall, the required python packages are listed as follows:
 
@@ -35,6 +24,25 @@ Overall, the required python packages are listed as follows:
     <li><a href="https://matplotlib.org/">matplotlib</a></li>
 </ul>
 
+### Installation
+
+Use pip to install all the required libraries listed in the requirements.txt file.
+
+<code> pip install -r requirements.txt </code>
+
+### Data
+The data used in this project comes from two sources:
+
+<ul>
+  <li>CER smart meter dataset from the ISSDA archive.</li>
+  <li>Private smart meter dataset provide by EDF (Electricité De France).</li>
+</ul> 
+
+To download the preprocessed subsample of the CER dataset (data/label/ExogneDate) :
+
+<code>cd data</code>
+
+Copy and paste the data from the link drive folder indicate in the README.md file.
 
 ### Appliance Detection Framework
 Overview of our proposed Appliance Detection Framework.
