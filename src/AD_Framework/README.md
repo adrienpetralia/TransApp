@@ -1,1 +1,0 @@
-## Appliance Detection Framework implementation
