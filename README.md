@@ -25,13 +25,13 @@ Overall, the required python packages are listed as follows:
 
 <ul>
     <li><a href="https://numpy.org/">numpy</a></li>
-    <li>[pandas](https://pandas.pydata.org/)</li>
-    <li>[sklearn](https://scikit-learn.org/stable/)</li>
-    <li>[imbalanced-learn](https://imbalanced-learn.org/stable/)</li>
-    <li>[pytorch==1.8.1](https://pytorch.org/docs/1.8.1/)</li>
-    <li>[torchinfo](https://pypi.org/project/torchinfo/0.0.1/)</li>
-    <li>[scipy](https://scipy.org/)</li>
-    <li>[sktime](http://www.sktime.net/en/latest/)</li>
+    <li><a href="https://pandas.pydata.org/">pandas</a></li>
+    <li><a href="https://scikit-learn.org/stable/>sklearn"</a></li>
+    <li><a href="https://imbalanced-learn.org/stable/">imbalanced-learn</a></li>
+    <li><a href="https://pytorch.org/docs/1.8.1/">pytorch==1.8.1</a></li>
+    <li><a href="https://pypi.org/project/torchinfo/0.0.1/">torchinfo</a></li>
+    <li><a href="https://scipy.org/">scipy</a></li>
+    <li><a href="http://www.sktime.net/en/latest/">sktime</a></li>
 </ul>
 
 
