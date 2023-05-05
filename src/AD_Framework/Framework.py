@@ -1,3 +1,13 @@
+#################################################################################################################
+#
+# @copyright : ©2023 EDF
+# @author : Adrien Petralia
+# @description : Appliance Detection Framework implementation
+# @component: src/AD_Framework/
+# @file : Framework.py
+#
+#################################################################################################################
+
 import os
 import time
 import warnings
