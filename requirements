@@ -1,7 +1,9 @@
-tqdm
-pandas
 numpy
-scikit_learn
+pandas
+sklearn
+imbalanced-learn
+pytorch==1.8.1
+torchinfo
+scipy
+sktime
 matplotlib
-torchsummary
-torch==1.8.1
