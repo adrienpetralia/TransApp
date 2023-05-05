@@ -1,8 +1,8 @@
-<center><h1>ADF & TransApp</h1></center>
+<h1 align="center">ADF & TransApp</h1>
 
-<h1 align="center">Material Bread</h1>
-
-![Intro image](https://github.com/adrienpetralia/TransApp/blob/master/ressources/Intro.png?raw=true)
+<p align="center">
+    <img width="200" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Intro.png" alt="Intro image">
+</p>
 
 ## A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series 
 
