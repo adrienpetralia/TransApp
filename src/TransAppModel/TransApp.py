@@ -18,7 +18,7 @@ import torch.nn.functional as F
 from torch import Tensor
 from typing import Callable, Optional
 
-from Encoding import PositionalEncoding1D, LearnablePositionalEncoding1D
+from PositionalEncoding import PositionalEncoding1D, LearnablePositionalEncoding1D
 from AttentionMask import DiagonalMask, TriangularCausalMask
 
 # Convolutional Dilated Embedding Block Functions
