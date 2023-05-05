@@ -4,7 +4,7 @@
     <img width="450" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Intro.png" alt="Intro image">
 </p>
 
-<h1 align="center">A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series </h1>
+<h2 align="center">A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series </h2>
 
 ### Prerequisites 
 
