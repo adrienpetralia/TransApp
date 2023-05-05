@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">ADF & TransApp</h1>
+<center><h1>ADF & TransApp</h1></center>
 
 ![Intro image](https://github.com/adrienpetralia/TransApp/blob/master/ressources/Intro.png?raw=true)
 
