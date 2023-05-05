@@ -1,6 +1,5 @@
-# <p style="text-align: center;">ADF & TransApp</p>
+<h1 style="text-align: center;">ADF & TransApp</h1>
 
-And some more regular text.
 ![Intro image](https://github.com/adrienpetralia/TransApp/blob/master/ressources/Intro.png?raw=true)
 
 ## A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series 
