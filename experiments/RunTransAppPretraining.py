@@ -1,3 +1,14 @@
+#################################################################################################################
+#
+# @copyright : ©2023 EDF
+# @author : Adrien Petralia
+# @description : Pretrained TransApp
+# @component: experiments/
+# @file : RunTransAppPretraining.py
+#
+#################################################################################################################
+
+
 import os, sys
 import numpy as np
 import pandas as pd
@@ -5,14 +16,14 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from Data_Utils import *
+
 
 from sklearn.preprocessing import StandardScaler
-from Utils._utils_ import *
-from Utils._utils_preprocessing_ import *
-from Utils.Losses.MaskedMSELoss import *
 
-from Utils.Models.TransApp import *
+from data_utils import *
+from ..src.AD_Framework.Framework import *
+from ..src.Losses.MaskedMSELoss import *
+from ..src.TransAppModel.TransApp import *
 
 def launch_pretraining(model, 
                        save_path, m, win,
