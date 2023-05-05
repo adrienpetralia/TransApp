@@ -23,14 +23,14 @@ Copy and paste the data from the link drive folder indicate in the README.md fil
 
 Overall, the required python packages are listed as follows:
 
--[numpy](https://numpy.org/)
--[pandas](https://pandas.pydata.org/)
--[sklearn](https://scikit-learn.org/stable/)
--[imbalanced-learn](https://imbalanced-learn.org/stable/)
--[pytorch==1.8.1](https://pytorch.org/docs/1.8.1/)
--[torchinfo](https://pypi.org/project/torchinfo/0.0.1/)
--[scipy](https://scipy.org/)
--[sktime](http://www.sktime.net/en/latest/) 
+- [numpy](https://numpy.org/)
+- [pandas](https://pandas.pydata.org/)
+- [sklearn](https://scikit-learn.org/stable/)
+- [imbalanced-learn](https://imbalanced-learn.org/stable/)
+- [pytorch==1.8.1](https://pytorch.org/docs/1.8.1/)
+- [torchinfo](https://pypi.org/project/torchinfo/0.0.1/)
+- [scipy](https://scipy.org/)
+- [sktime](http://www.sktime.net/en/latest/) 
 
 
 
