@@ -73,6 +73,51 @@ class TSDataset(torch.utils.data.Dataset):
             return self.samples[idx]
         else:
             return self.samples[idx], self.labels[idx]
+        
+        
+        
+        
+
+# ====================================== Imbalance Metric Class ====================================== #        
+class getmetrics():
+    """
+    Basics metrics class for imbalance classification
+    """
+    def __init__(self, minority_class=None):
+        self.minority_class = minority_class
+        
+    def __call__(self, y, y_hat, y_hat_prob=None):
+        metrics = {}
+
+        if self.minority_class is not None:
+            minority_class = self.minority_class                
+        else:
+            y_label = np.unique(y)
+
+            if np.count_nonzero(y==y_label[0]) > np.count_nonzero(y==y_label[1]):
+                minority_class = y_label[1]
+            else :
+                minority_class = y_label[0]
+
+        metrics['ACCURACY'] = accuracy_score(y, y_hat)
+        
+        metrics['PRECISION'] = precision_score(y, y_hat, pos_label=minority_class, average='binary')
+        metrics['RECALL'] = recall_score(y, y_hat, pos_label=minority_class, average='binary')
+        metrics['PRECISION_MACRO'] = precision_score(y, y_hat, average='macro')
+        metrics['RECALL_MACRO'] = recall_score(y, y_hat, average='macro')
+        
+        metrics['F1_SCORE'] = f1_score(y, y_hat, pos_label=minority_class, average='binary')
+        metrics['F1_SCORE_MACRO'] = f1_score(y, y_hat, average='macro')
+        metrics['F1_SCORE_WEIGHTED'] = f1_score(y, y_hat, average='weighted')
+        
+        metrics['CONFUSION_MATRIX'] = confusion_matrix(y, y_hat)
+        
+        if y_hat_prob is not None:
+            metrics['ROC_AUC_SCORE'] = roc_auc_score(y, y_hat_prob)
+            metrics['ROC_AUC_SCORE_MACRO'] = roc_auc_score(y, y_hat_prob, average='macro')
+            metrics['ROC_AUC_SCORE_WEIGHTED'] = roc_auc_score(y, y_hat_prob, average='weighted')
+
+        return metrics
           
           
           
@@ -326,7 +371,7 @@ class BasedClassifTrainer(object):
                  save_fig=False, path_fig=None,
                  save_checkpoint=False, path_checkpoint=None):
         """
-        PyTorch Model Trainer Class for classification case
+        PyTorch Parent Class : Model Trainer for classification case
         """
 
         # =======================class variables======================= #
@@ -631,16 +676,12 @@ class BasedClassifTrainer(object):
             return self.f_metrics(y, y_hat)   
     
     
-class DAP_Framework(BasedClassifTrainer):
+class AD_Framework(BasedClassifTrainer):
     """
-    Detection of Appliance Problem Framework
+    Appliance Detection Framework class : child of BasedClassifTrainer
     
     Class Based on BasedClassifTrainer : 
-    -> This class is made for training/testing and evaluating a deep Pytorch model on binary
-    appliance classification cases.
-    
-    - Voter Implemented for Univariate and Multivariate TS
-    - Voter Implemented for long TS and sliced TS
+    This class is made for training/testing and evaluating a deep Pytorch model on binary appliance classification cases
     """
     def __init__(self,
                  model, 
@@ -658,7 +699,7 @@ class DAP_Framework(BasedClassifTrainer):
                  scale_by_subseq_in_voter=False, scale_dim=[0],
                  batch_size_voter=1):
         """
-        Detection of Appliance Framework Class based on BasedClassifTrainer parent class
+        Appliance Detection Framework Class
         """
         super().__init__(model=model, 
                          train_loader=train_loader, valid_loader=valid_loader,
@@ -677,7 +718,7 @@ class DAP_Framework(BasedClassifTrainer):
         self.scale_dim = scale_dim
         self.batch_size_voter = batch_size_voter
     
-    def DAPvoter(self, dataset_voter, win, m=1, 
+    def ADFvoter(self, dataset_voter, win, m=1, 
                  mask='test_voter_metrics',
                  mask_time='test_voter_time', 
                  mask1='bestthreshold_valid_voter_metrics',
@@ -694,10 +735,10 @@ class DAP_Framework(BasedClassifTrainer):
         tmp_time = time.time()
         
         if isinstance(dataset_voter, pd.core.frame.DataFrame):
-            y, y_hat = self._DAPvoter_df(dataset_voter=dataset_voter, m=m, win=win, 
+            y, y_hat = self._ADFvoter_df(dataset_voter=dataset_voter, m=m, win=win, 
                                          threshold=threshold, n_best_pred=n_best_pred)
         else:
-            y, y_hat = self._DAPvoter(dataset_voter=dataset_voter, m=m, win=win,
+            y, y_hat = self._ADFvoter(dataset_voter=dataset_voter, m=m, win=win,
                                       threshold=threshold, n_best_pred=n_best_pred)
 
         metrics = self._apply_metrics(y, y_hat)
@@ -714,7 +755,7 @@ class DAP_Framework(BasedClassifTrainer):
             return metrics
         
         
-    def DAPvoter_proba(self, dataset_voter, m, win, average_mode='quantile', q=None, threshold=None,
+    def ADFvoter_proba(self, dataset_voter, m, win, average_mode='quantile', q=None, threshold=None,
                        mask='test_voterproba_metrics', 
                        mask_time='test_probavoter_time', 
                        mask1='bestquantile_valid_voter_metrics',
@@ -734,10 +775,10 @@ class DAP_Framework(BasedClassifTrainer):
                               .format(average_mode))
     
         if isinstance(dataset_voter, pd.core.frame.DataFrame):
-            y, y_hat, y_hat_prob = self._DAPvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
+            y, y_hat, y_hat_prob = self._ADFvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
                                                           q=q, threshold=threshold)
         else:
-            y, y_hat, y_hat_prob = self._DAPvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
+            y, y_hat, y_hat_prob = self._ADFvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
                                                        q=q, threshold=threshold)
                 
         metrics = self._apply_metrics(y, y_hat, y_hat_prob)
@@ -754,7 +795,7 @@ class DAP_Framework(BasedClassifTrainer):
             return metrics
         
     
-    def _DAPvoterproba_df(self, dataset_voter, m, win, average_mode, q, threshold): 
+    def _ADFvoterproba_df(self, dataset_voter, m, win, average_mode, q, threshold): 
     
         y = []
         y_hat = []
@@ -809,7 +850,7 @@ class DAP_Framework(BasedClassifTrainer):
         return np.array(y), np.array(y_hat), np.array(y_hat_prob)
     
     
-    def _DAPvoterproba(self, dataset_voter, m, win, average_mode, q, threshold): 
+    def _ADFvoterproba(self, dataset_voter, m, win, average_mode, q, threshold): 
     
         y = dataset_voter[:][1].flatten()
         y_hat = np.zeros(y.shape)
@@ -867,7 +908,7 @@ class DAP_Framework(BasedClassifTrainer):
         return y, y_hat, y_hat_prob
     
     
-    def _DAPvoter_df(self, dataset_voter, m, win, threshold, n_best_pred=None):
+    def _ADFvoter_df(self, dataset_voter, m, win, threshold, n_best_pred=None):
     
         y = []
         y_hat = []
@@ -926,7 +967,7 @@ class DAP_Framework(BasedClassifTrainer):
         return np.array(y), np.array(y_hat)
     
     
-    def _DAPvoter(self, dataset_voter, m, win, threshold, n_best_pred=None):
+    def _ADFvoter(self, dataset_voter, m, win, threshold, n_best_pred=None):
         y = dataset_voter[:][1].flatten()
         y_hat = np.zeros(y.shape)
 
@@ -985,7 +1026,7 @@ class DAP_Framework(BasedClassifTrainer):
         return np.array(y), np.array(y_hat)
         
         
-    def DAPFindBestThreshold(self, dataset_voter, m, win, n_best_pred=None, 
+    def ADFFindBestThreshold(self, dataset_voter, m, win, n_best_pred=None, 
                              mask='allthreshold_valid_voter_metrics',
                              maskbest='bestthreshold_valid_voter_metrics',
                              metric_opt='F1_SCORE_MACRO', 
@@ -995,14 +1036,15 @@ class DAP_Framework(BasedClassifTrainer):
         list_metrics = []
         best_metrics = None
 
-        for threshold_ in range(1, 10, 1):
-            threshold = threshold_/10
+        for threshold in np.arange(0.1, 1, 0.1):
+
+            threshold = round(threshold, 2)
             
             if isinstance(dataset_voter, pd.core.frame.DataFrame):
-                y, y_hat = self._DAPvoter_df(dataset_voter=dataset_voter, m=m, win=win, 
+                y, y_hat = self._ADFvoter_df(dataset_voter=dataset_voter, m=m, win=win, 
                                              threshold=threshold, n_best_pred=n_best_pred)
             else:
-                y, y_hat = self._DAPvoter(dataset_voter=dataset_voter, m=m, win=win, 
+                y, y_hat = self._ADFvoter(dataset_voter=dataset_voter, m=m, win=win, 
                                           threshold=threshold, n_best_pred=n_best_pred)
             
             metrics = self._apply_metrics(y, y_hat)
@@ -1030,7 +1072,7 @@ class DAP_Framework(BasedClassifTrainer):
             return best_metrics
         
         
-    def DAPFindBestQuantile(self, dataset_voter, m, win, n_best_pred=None, 
+    def ADFFindBestQuantile(self, dataset_voter, m, win, n_best_pred=None, 
                             mask='allquantile_valid_voter_metrics',
                             maskbest='bestquantile_valid_voter_metrics',
                             maskmetric='F1_SCORE_MACRO',
@@ -1046,10 +1088,10 @@ class DAP_Framework(BasedClassifTrainer):
             quantile = round(quantile, 2)
             
             if isinstance(dataset_voter, pd.core.frame.DataFrame):
-                y, y_hat, y_hat_prob = self._DAPvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
+                y, y_hat, y_hat_prob = self._ADFvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
                                                               q=quantile, threshold=threshold)
             else:
-                y, y_hat, y_hat_prob = self._DAPvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
+                y, y_hat, y_hat_prob = self._ADFvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
                                                            q=quantile, threshold=threshold)
             
             metrics = self._apply_metrics(y, y_hat, y_hat_prob)
@@ -1080,6 +1122,11 @@ class DAP_Framework(BasedClassifTrainer):
         
 # ====================================== Sktime Framework Implementation ====================================== #
 class BasedClassifTrainer_Sktime(object):
+    """
+    Sktime based classif trainer classs
+    
+    For Sktime like model classifier (Arsenal, Rocket)
+    """
     def __init__(self,
                  model,
                  f_metrics=getmetrics(),
@@ -1176,7 +1223,7 @@ class BasedClassifTrainer_Sktime(object):
 
           
           
-class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
+class AD_Framework_Sktime(BasedClassifTrainer_Sktime):
     """
     Detection of Appliance Problem Framework for Sktime like model (ROCKET)
     
@@ -1199,7 +1246,7 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
                          verbose=verbose,
                          save_checkpoint=save_checkpoint, path_checkpoint=path_checkpoint)
     
-    def DAPvoter(self, dataset_voter, win, m=1, 
+    def ADFvoter(self, dataset_voter, win, m=1, 
                  mask='test_voter_metrics', 
                  mask1='bestthreshold_valid_voter_metrics',
                  mask2='Threshold_voter',
@@ -1215,10 +1262,10 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
         tmp_time = time.time()
         
         if isinstance(dataset_voter, pd.core.frame.DataFrame):
-            y, y_hat = self._DAPvoter_df(dataset_voter=dataset_voter, m=m, win=win, 
+            y, y_hat = self._ADFvoter_df(dataset_voter=dataset_voter, m=m, win=win, 
                                          threshold=threshold, n_best_pred=n_best_pred)
         else:
-            y, y_hat = self._DAPvoter(dataset_voter=dataset_voter, m=m, win=win,
+            y, y_hat = self._ADFvoter(dataset_voter=dataset_voter, m=m, win=win,
                                       threshold=threshold, n_best_pred=n_best_pred)
 
         metrics = self._apply_metrics(y, y_hat)
@@ -1235,7 +1282,7 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
             return metrics
         
         
-    def DAPvoter_proba(self, dataset_voter, m, win, average_mode='quantile', q=None, threshold=None,
+    def ADFvoter_proba(self, dataset_voter, m, win, average_mode='quantile', q=None, threshold=None,
                        mask='test_voterproba_metrics', 
                        mask1='bestquantile_valid_voter_metrics',
                        mask2='quantile',
@@ -1254,10 +1301,10 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
                               .format(average_mode))
     
         if isinstance(dataset_voter, pd.core.frame.DataFrame):
-            y, y_hat, y_hat_prob = self._DAPvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
+            y, y_hat, y_hat_prob = self._ADFvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
                                                           q=q, threshold=threshold)
         else:
-            y, y_hat, y_hat_prob = self._DAPvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
+            y, y_hat, y_hat_prob = self._ADFvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode=average_mode,
                                                        q=q, threshold=threshold)
                 
         metrics = self._apply_metrics(y, y_hat, y_hat_prob)
@@ -1274,7 +1321,7 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
             return metrics
         
     
-    def _DAPvoterproba_df(self, dataset_voter, m, win, average_mode, q, threshold): 
+    def _ADFvoterproba_df(self, dataset_voter, m, win, average_mode, q, threshold): 
     
         y = []
         y_hat = []
@@ -1315,7 +1362,7 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
         return np.array(y), np.array(y_hat), np.array(y_hat_prob)
     
     
-    def _DAPvoterproba(self, dataset_voter, m, win, average_mode, q, threshold): 
+    def _ADFvoterproba(self, dataset_voter, m, win, average_mode, q, threshold): 
     
         y = dataset_voter[:][1].flatten()
         y_hat = np.zeros(y.shape)
@@ -1359,7 +1406,7 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
         return y, y_hat, y_hat_prob
         
         
-    def DAPFindBestQuantile(self, dataset_voter, m, win, n_best_pred=None, 
+    def ADFFindBestQuantile(self, dataset_voter, m, win, n_best_pred=None, 
                             mask='allquantile_valid_voter_metrics',
                             maskbest='bestquantile_valid_voter_metrics',
                             maskmetric='F1_SCORE_MACRO',
@@ -1375,10 +1422,10 @@ class DAP_Framework_Sktime(BasedClassifTrainer_Sktime):
             quantile = round(quantile, 2)
             
             if isinstance(dataset_voter, pd.core.frame.DataFrame):
-                y, y_hat, y_hat_prob = self._DAPvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
+                y, y_hat, y_hat_prob = self._ADFvoterproba_df(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
                                                               q=quantile, threshold=threshold)
             else:
-                y, y_hat, y_hat_prob = self._DAPvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
+                y, y_hat, y_hat_prob = self._ADFvoterproba(dataset_voter=dataset_voter, m=m, win=win, average_mode='quantile',
                                                            q=quantile, threshold=threshold)
             
             metrics = self._apply_metrics(y, y_hat, y_hat_prob)
