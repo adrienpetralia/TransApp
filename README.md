@@ -1,15 +1,21 @@
 <h1 align="center">ADF & TransApp</h1>
 
 <p align="center">
-    <img width="200" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Intro.png" alt="Intro image">
+    <img width="800" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Intro.png" alt="Intro image">
 </p>
 
-## A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series 
+<h1 align="center">A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series </h1>
+## 
 
 ### Appliance Detection Framework
-![Framework image](https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png?raw=true)
+
+<p align="center">
+    <img width="800" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
+</p>
 
 ### TransApp Classifier
-![TransApp image](https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png?raw=true)
+<p align="center">
+    <img width="800" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png" alt="TransAppModel image">
+</p>
 
 ## Github Repository
