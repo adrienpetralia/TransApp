@@ -6,6 +6,15 @@
 
 <h1 align="center">A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series </h1>
 
+### Data
+The data used in this project comes from two sources:
+
+<ul>
+  <li>CER smart meter dataset from the ISSDA archive.</li>
+  <li>Private smart meter dataset provide by EDF (Electricité De France).</li>
+</ul> 
+
+
 ### Appliance Detection Framework
 
 <p align="center">
