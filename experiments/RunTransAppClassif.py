@@ -17,10 +17,9 @@ import torch.nn as nn
 
 from sklearn.preprocessing import StandardScaler
 
-from ..data_Utils import *
-from ..utils_ import *
-from ..utils_preprocessing import *
+from data_utils import *
 from ..src.Models.TransApp import *
+from ..src.AD_Framework.Framework import *
 
 def launch_training(model, 
                     save_path, m, win,
@@ -85,8 +84,8 @@ def launch_training(model,
     model_trainer.evaluate(torch.utils.data.DataLoader(test_dataset, batch_size=1))
 
     #============ find best quantile on valid dataset ============#
-    model_trainer.DAPFindBestQuantile(TSDataset(X_valid_voter, y_valid_voter), m=m, win=win)
-    quant_metric = model_trainer.DAPvoter_proba(TSDataset(X_test_voter, y_test_voter), m=m, win=win)
+    model_trainer.ADFFindBestQuantile(TSDataset(X_valid_voter, y_valid_voter), m=m, win=win)
+    quant_metric = model_trainer.ADFvoter_proba(TSDataset(X_test_voter, y_test_voter), m=m, win=win)
     print(quant_metric)
 
     return
