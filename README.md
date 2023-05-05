@@ -38,11 +38,11 @@ Overall, the required python packages are listed as follows:
 ### Appliance Detection Framework
 Overview of our proposed Appliance Detection Framework.
 <p align="center">
-    <img width="800" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
+    <img width="600" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
 </p>
 
 ### TransApp Classifier
 Overview of our proposed TransApp time series classifier.
 <p align="center">
-    <img width="700" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png" alt="TransAppModel image">
+    <img width="600" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png" alt="TransAppModel image">
 </p>
