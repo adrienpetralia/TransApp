@@ -10,8 +10,8 @@ from src.utils import *
 path_data = str(Path(os.getcwd()).resolve().parents[0]) + '/data/'
 
 def CER_get_data_case(case_name, seed, exo_variable=[], win=1024, ratio_resample=0.8, group='residential'):
-    data = pd.read_csv(path_data+'data/x_'+group+'_25728.csv').set_index('id_pdl')
-    case = pd.read_csv(path_data+'labels/'+case_name+'.csv').set_index('id_pdl')
+    data = pd.read_csv(path_data+'Inputs/x_'+group+'_25728.csv').set_index('id_pdl')
+    case = pd.read_csv(path_data+'Labels/'+case_name+'.csv').set_index('id_pdl')
 
     if case_name=='pluginheater_case':
         data = data.iloc[:, 6672:10991]
@@ -63,7 +63,7 @@ def CER_get_data_case(case_name, seed, exo_variable=[], win=1024, ratio_resample
 
 
 def CER_get_data_pretraining(seed=0, win=1024, exo_variable=[], group='residential', entire_curve_normalization=True):
-    data = pd.read_csv(path_data+'data/x_'+group+'_25728.csv').set_index('id_pdl')
+    data = pd.read_csv(path_data+'Inputs/x_'+group+'_25728.csv').set_index('id_pdl')
     
     if entire_curve_normalization:
         data = pd.DataFrame(StandardScaler().fit_transform(data.T).T, columns=data.columns, index=data.index)

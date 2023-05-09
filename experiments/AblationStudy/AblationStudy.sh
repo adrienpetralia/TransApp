@@ -7,4 +7,5 @@
 #SBATCH -e ./job_outputs/error.err
 
 . /env/activate myenv
-python3 RunTransAppPretraining.py $1 $2
+python3 AblationStudy.py $1 $2
+

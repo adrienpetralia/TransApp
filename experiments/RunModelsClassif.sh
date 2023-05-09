@@ -3,8 +3,8 @@
 #SBATCH --time=3-00:00:00
 #SBATCH --mem=0
 #SBATCH -N 1
-#SBATCH -o ./job_outputs/ModelsComparaison.out
-#SBATCH -e ./job_outputs/ModelsComparaison.err
+#SBATCH -o ./job_outputs/output.out
+#SBATCH -e ./job_outputs/error.err
 
-. /projets/datascience_retd/dist/miniconda37/bin/activate pytorch-1.8
+. /env/activate myenv
 python3 RunModelsClassif.py $1 $2

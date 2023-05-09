@@ -122,8 +122,8 @@ def get_model_inst(m, win, dim_model, path_select_core=None):
 if __name__ == "__main__":
     print("TransApp experiments on CER data detection cases.")
 
-    path_results = '/results/CER/'
-    path_pretrained_core = '/results/'
+    path_results = str(root) + '/results/TransAppResults/'
+    path_pretrained_core = '/results/TransAppPretrained/'
 
     case_name  = str(sys.argv[1])
     model_name = str(sys.argv[2])

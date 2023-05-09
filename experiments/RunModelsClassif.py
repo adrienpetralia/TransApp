@@ -19,18 +19,19 @@ from sklearn.preprocessing import StandardScaler
 
 root = Path(os.getcwd()).resolve().parents[0]
 sys.path.append(str(root))
-from experiments.data_utils import *
 
+from experiments.data_utils import *
 from src.AD_Framework.Framework import *
 from src.Models.InceptionTime import *
 from src.Models.ResNetAtt import *
 from src.Models.ResNet import *
 from src.Models.FCN import * 
 
+path_data = str(root) + '/data/'
 
 def process_data(case_name, seed, exo_variable=[], win=1024, ratio_resample=0.8, group='residential', slicing=None):
-    df_data_x = pd.read_csv('../data/x_'+group+'_25728.csv').set_index('id_pdl')
-    case = pd.read_csv('../data/labels/'+case_name+'.csv').set_index('id_pdl')
+    df_data_x = pd.read_csv(path_data+'Inputs/x_'+group+'_25728.csv').set_index('id_pdl')
+    case = pd.read_csv(path_data+'Labels/'+case_name+'.csv').set_index('id_pdl')
 
     # All curve normalization
     data = pd.DataFrame(StandardScaler().fit_transform(df_data_x.T).T, columns=df_data_x.columns, index=df_data_x.index)
@@ -39,7 +40,7 @@ def process_data(case_name, seed, exo_variable=[], win=1024, ratio_resample=0.8,
         data = data.iloc[:, 6672:10991]
 
     if exo_variable:
-        extra = pd.read_csv('../data/ExogeneData/extra_25728.csv')
+        extra = pd.read_csv(path_data+'ExogeneData/extra_25728.csv')
         extra['date'] = pd.to_datetime(extra['date'])
         if case_name=='pluginheater_case':
             extra = extra.iloc[6672:10991, :]
@@ -167,7 +168,7 @@ if __name__ == "__main__":
                                       'p_es': 10, 'p_rlr': 3, 'n_warmup_epochs': 0}
              }
 
-    path_results = '../results/'
+    path_results = str(root) + '/results/ModelComparaison/InFramework/CER/'
 
     list_exo_variable = [[],
                          ['hours_cos', 'hours_sin', 'days_cos', 'days_sin']]

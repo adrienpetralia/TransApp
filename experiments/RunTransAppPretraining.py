@@ -16,8 +16,6 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-
-
 from sklearn.preprocessing import StandardScaler
 
 root = Path(os.getcwd()).resolve().parents[0]
@@ -84,7 +82,7 @@ if __name__ == "__main__":
 
     name_exo_variables = ['None', 'Embed']
 
-    path_results = '/results/PretrainedModels/' + name_exo_variables[i] + '/'
+    path_results = str(root) + '/results/TransAppPretrained/' + name_exo_variables[i] + '/'
     _ = create_dir(path_results)
 
     dict_params = {'lr': 1e-4, 'wd': 1e-4, 'batch_size': 16, 'epochs': 20}
