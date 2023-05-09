@@ -17,13 +17,15 @@ import torch.nn as nn
 
 from sklearn.preprocessing import StandardScaler
 
-from data_utils import *
+root = Path(os.getcwd()).resolve().parents[0]
+sys.path.append(str(root))
+from experiments.data_utils import *
 
-from ..src.AD_Framework.Framework import *
-from ..src.Models.InceptionTime import *
-from ..src.Models.ResNetAtt import *
-from ..src.Models.ResNet import *
-from ..src.Models.FCN import * 
+from src.AD_Framework.Framework import *
+from src.Models.InceptionTime import *
+from src.Models.ResNetAtt import *
+from src.Models.ResNet import *
+from src.Models.FCN import * 
 
 
 def process_data(case_name, seed, exo_variable=[], win=1024, ratio_resample=0.8, group='residential', slicing=None):

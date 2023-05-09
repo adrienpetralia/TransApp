@@ -17,9 +17,11 @@ import torch.nn as nn
 
 from sklearn.preprocessing import StandardScaler
 
-from data_utils import *
-from ..src.Models.TransApp import *
-from ..src.AD_Framework.Framework import *
+root = Path(os.getcwd()).resolve().parents[0]
+sys.path.append(str(root))
+from experiments.data_utils import *
+from src.Models.TransApp import *
+from src.AD_Framework.Framework import *
 
 def launch_training(model, 
                     save_path, m, win,

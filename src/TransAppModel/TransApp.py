@@ -18,8 +18,8 @@ import torch.nn.functional as F
 from torch import Tensor
 from typing import Callable, Optional
 
-from PositionalEncoding import PositionalEncoding1D, LearnablePositionalEncoding1D
-from AttentionMask import DiagonalMask, TriangularCausalMask
+from src.TransAppModel.PositionalEncoding import PositionalEncoding1D, LearnablePositionalEncoding1D
+from src.TransAppModel.AttentionMask import DiagonalMask, TriangularCausalMask
 
 # Convolutional Dilated Embedding Block Functions
 class Conv1dSamePadding(nn.Conv1d):
