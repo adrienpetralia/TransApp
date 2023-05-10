@@ -34,7 +34,9 @@ Overall, the required python packages are listed as follows:
 
 Use pip to install all the required libraries listed in the requirements.txt file.
 
-<code> pip install -r requirements.txt </code>
+```
+pip install -r requirements.txt
+```
 
 ### Data
 The data used in this project comes from two sources:
@@ -46,7 +48,9 @@ The data used in this project comes from two sources:
 
 To download the preprocessed subsample of the CER dataset (data/label/ExogneDate) :
 
-<code>cd data</code>
+```
+cd data
+```
 
 Copy and paste the data from the link drive folder indicate in the README.md file.
 
