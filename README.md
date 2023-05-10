@@ -6,6 +6,12 @@
 
 <h2 align="center">A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series </h2>
 
+<div align="center">
+<p>
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/adrienpetralia/TransApp">
+</p>
+</div>
+
 ### Prerequisites 
 
 Python version : <code> >= Python 3.7 </code>
