@@ -1,3 +1,13 @@
+#################################################################################################################
+#
+# @copyright : ©2023 EDF
+# @author : Adrien Petralia
+# @description : ablation study experiments
+# @component: /experiments/AblationStudy/
+# @file : AblationStudy.py
+#
+#################################################################################################################
+
 import os, sys
 import numpy as np
 import pandas as pd
@@ -126,9 +136,6 @@ if __name__ == "__main__":
     list_case_CER = ['cooker_case', 'dishwasher_case', 'desktopcomputer_case', 
                      'ecs_case', 'pluginheater_case', 'tumbledryer_case', 
                      'tv_greater21inch_case', 'tv_less21inch_case', 'laptopcomputer_case']
-
-    list_case_CERBis = ["clim", "convpac", "dishwasher", "electricvehicle", 
-                        "heater", "tumbledryer", "waterheater"]
 
     if dataset=='CER':
         path_results = path_results + '/CER/'
