@@ -1,3 +1,13 @@
+#################################################################################################################
+#
+# @copyright : ©2023 EDF
+# @author : Adrien Petralia
+# @description : inference time experiments
+# @component: /experiments/AblationStudy/
+# @file : InferenceTimeDeep.py
+#
+#################################################################################################################
+
 import os, sys
 import numpy as np
 import pandas as pd
