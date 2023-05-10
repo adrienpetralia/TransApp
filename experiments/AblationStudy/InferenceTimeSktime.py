@@ -1,3 +1,14 @@
+#################################################################################################################
+#
+# @copyright : ©2023 EDF
+# @author : Adrien Petralia
+# @description : inference time experiments with sktime classfiers
+# @component: /experiments/AblationStudy/
+# @file : InferenceTimeSktime.py
+#
+#################################################################################################################
+
+
 import os, sys
 import numpy as np
 import pandas as pd
