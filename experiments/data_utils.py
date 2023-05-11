@@ -4,13 +4,14 @@ import numpy as np
 import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
+from imblearn.under_sampling import RandomUnderSampler
 
 from src.utils import *
 
 path_data = str(Path(os.getcwd()).resolve().parents[0]) + '/data/'
 
-def CER_get_data_case(case_name, seed, exo_variable=[], win=1024, ratio_resample=0.8, group='residential'):
-    data = pd.read_csv(path_data+'Inputs/x_'+group+'_25728.csv').set_index('id_pdl')
+def CER_get_data_case(case_name, seed, exo_variable=[], win=1024, ratio_resample=0.8):
+    data = pd.read_csv(path_data+'Inputs/x_residential_25728.csv').set_index('id_pdl')
     case = pd.read_csv(path_data+'Labels/'+case_name+'.csv').set_index('id_pdl')
 
     if case_name=='pluginheater_case':
@@ -62,8 +63,8 @@ def CER_get_data_case(case_name, seed, exo_variable=[], win=1024, ratio_resample
     return returned_tuple
 
 
-def CER_get_data_pretraining(seed=0, win=1024, exo_variable=[], group='residential', entire_curve_normalization=True):
-    data = pd.read_csv(path_data+'Inputs/x_'+group+'_25728.csv').set_index('id_pdl')
+def CER_get_data_pretraining(seed=0, win=1024, exo_variable=[], entire_curve_normalization=True):
+    data = pd.read_csv(path_data+'Inputs/x_residential_25728.csv').set_index('id_pdl')
     
     if entire_curve_normalization:
         data = pd.DataFrame(StandardScaler().fit_transform(data.T).T, columns=data.columns, index=data.index)
@@ -119,6 +120,60 @@ def Add_Exogene_CER(df_data, df_extra, list_variable, reshape2D=True):
     else:
         return tmp
 
+    
+def split_train_valid_test_pdl(df_data, test_size=0.2, valid_size=0, nb_label_col=1, seed=0, return_df=False):
+    """
+    Split DataFrame based on index ID (ID PDL for example)
+    
+    - Input : df_data -> DataFrame
+              test_size -> Percentage data for test
+              valid_size -> Percentage data for valid
+              nb_label_col -> Number of columns of label
+              seed -> Set seed
+              return_df -> Return DataFrame instances, or Numpy Instances
+    - Output:
+            np.arrays or DataFrame Instances
+    """
+
+    np.random.seed(seed)
+    list_pdl = np.array(df_data.index.unique())
+    np.random.shuffle(list_pdl)
+    pdl_train_valid = list_pdl[:int(len(list_pdl) * (1-test_size))]
+    pdl_test = list_pdl[int(len(list_pdl) * (1-test_size)):]
+    np.random.shuffle(pdl_train_valid)
+    pdl_train = pdl_train_valid[:int(len(pdl_train_valid) * (1-valid_size))]
+    
+    df_train = df_data.loc[pdl_train, :].copy()
+    df_test = df_data.loc[pdl_test, :].copy()
+    
+
+    df_train = df_train.sample(frac=1, random_state=seed)
+    df_test = df_test.sample(frac=1, random_state=seed)
+    
+    if valid_size != 0:
+        pdl_valid = pdl_train_valid[int(len(pdl_train_valid) * (1-valid_size)):]
+        df_valid = df_data.loc[pdl_valid, :].copy()
+        df_valid = df_valid.sample(frac=1, random_state=seed)
+            
+    if return_df:
+        if valid_size != 0:
+            return df_train, df_valid, df_test
+        else:
+            return df_train, df_test
+    else:
+        X_train = df_train.iloc[:,:-nb_label_col].to_numpy().astype(np.float32)
+        y_train = df_train.iloc[:,-nb_label_col:].to_numpy().astype(np.float32)
+        X_test  = df_test.iloc[:,:-nb_label_col].to_numpy().astype(np.float32)
+        y_test  = df_test.iloc[:,-nb_label_col:].to_numpy().astype(np.float32)
+
+        if valid_size != 0:
+            X_valid = df_valid.iloc[:,:-nb_label_col].to_numpy().astype(np.float32)
+            y_valid = df_valid.iloc[:,-nb_label_col:].to_numpy().astype(np.float32)
+
+            return X_train, y_train, X_valid, y_valid, X_test, y_test
+        else:
+            return X_train, y_train, X_test, y_test    
+    
 
 def RandomUnderSampler_(X, y=None, sampling_strategy='auto', seed=0, nb_label=1):
     np.random.seed(seed)
