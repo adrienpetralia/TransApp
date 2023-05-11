@@ -66,7 +66,8 @@ Overview of our proposed TransApp time series classifier.
 
 ## Experiments
 
-We provide a jupyter-notebook example to use our Appliance Detection Framework combined with our TransApp classifier on the CER data [TransAppExample](https://github.com/adrienpetralia/TransApp/tree/main/experiments/TransAppExample.ipynb). In addition, to reproduce papers experiments, use the following guidelines.
+We provide a jupyter-notebook example to use our Appliance Detection Framework combined with our TransApp classifier on the CER data [TransAppExample](https://github.com/adrienpetralia/TransApp/tree/main/experiments/TransAppExample.ipynb). 
+In addition, to reproduce papers experiments, use the following guidelines.
 
 ### Pretraining TransApp
 
