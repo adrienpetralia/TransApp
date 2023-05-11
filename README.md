@@ -12,6 +12,8 @@
 </p>
 </div>
 
+## Getting Started
+
 ### Prerequisites 
 
 Python version : <code> >= Python 3.7 </code>
@@ -48,6 +50,8 @@ The data used in this project comes from two sources:
 
 You may find more information on how to access the datasets in the [data](https://github.com/adrienpetralia/TransApp/tree/main/data) folder.
 
+## Architecture Overview
+
 ### Appliance Detection Framework
 Overview of our proposed Appliance Detection Framework.
 <p align="center">
@@ -59,3 +63,33 @@ Overview of our proposed TransApp time series classifier.
 <p align="center">
     <img width="600" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png" alt="TransAppModel image">
 </p>
+
+## Experiments
+
+We provide a jupyter-notebook example to use our Appliance Detection Framework combined with our TransApp classifier on the CER data [TransAppExample](https://github.com/adrienpetralia/TransApp/tree/main/experiments/TransAppExample.ipynb). In addition, to reproduce papers experiments, use the following guidelines.
+
+### Pretraining TransApp
+
+Pretraining TransApp in a self-supervised way using non labeled data :
+
+```
+sh LaunchTransAppPretraining.sh
+```
+
+### Appliance Detection with TransApp
+
+Use our Appliance Detection Framework combined with TransApp to detect appliance in consumption time series :
+
+```
+sh LaunchTransAppClassif.sh
+```
+
+### Appliance Detection with other time series classifiers
+
+Use our Appliance Detection Framework combined with ConvNet, ResNet or InceptionTime to detect appliance in consumption time series :
+
+```
+sh LaunchModelsClassif.sh
+```
+
+
