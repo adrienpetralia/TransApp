@@ -46,13 +46,7 @@ The data used in this project comes from two sources:
   <li>Private smart meter dataset provide by EDF (Electricité De France).</li>
 </ul> 
 
-To download the preprocessed subsample of the CER dataset (data/label/ExogneDate) :
-
-```
-cd data
-```
-
-Copy and paste the data from the link drive folder indicate in the README.md file.
+You may find more information on how to access the datasets in the [data](https://github.com/adrienpetralia/TransApp/tree/main/data) folder.
 
 ### Appliance Detection Framework
 Overview of our proposed Appliance Detection Framework.
