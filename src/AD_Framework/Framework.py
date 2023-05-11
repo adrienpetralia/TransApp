@@ -33,10 +33,10 @@ class TSDataset(torch.utils.data.Dataset):
     """
     MAP-Style PyTorch Time series Dataset with possibility of scaling
     
-    - X matrix of TS input, can be 2D or 3D, Dataframe instance or Numpy array instance.
-    - Labels : y labels associated to time series for classification. Possible to be None.
-    - scaler : provided type of scaler (sklearn StandardScaler, MinMaxScaler instance for example).
-    - scale_dim : list of dimensions to be scaled in case of multivariate TS.
+    - X inputs array of TS, can be 2D or 3D, Dataframe instance or Numpy array instance.
+    - Labels : y labels associated to time series for classification (optional).
+    - scaler : boolean (Z-Normalization of the input TS)
+    - scale_dim : list of dimensions to sacle when TS are multivariate.
     """
     def __init__(self, X, labels=None, scaler=False, scale_dim=None):
         
