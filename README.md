@@ -98,5 +98,5 @@ sh LaunchModelsClassif.sh
 
 #### Outside our Appliance Detection Framework
 
-Please refer to this Github [ApplianceDetectionBenchmark](https://github.com/adrienpetralia/ApplianceDetectionBenchmark) to see for reproduce the experiments, where an extensive evaluation of different classifiers have been tested.
+Please refer to this Github [ApplianceDetectionBenchmark](https://github.com/adrienpetralia/ApplianceDetectionBenchmark) to reproduce the experiments, where an extensive evaluation of different time series classifiers have been conducted, inluding on the datasets used in this study.
 
