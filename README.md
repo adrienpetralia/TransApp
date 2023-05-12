@@ -88,10 +88,15 @@ sh LaunchTransAppClassif.sh
 
 ### Appliance Detection with other time series classifiers
 
+#### Inside our Appliance Detection Framework
+
 Use our Appliance Detection Framework combined with ConvNet, ResNet or InceptionTime to detect appliance in consumption time series :
 
 ```
 sh LaunchModelsClassif.sh
 ```
 
+#### Outside our Appliance Detection Framework
+
+Please refer to this Github [ApplianceDetectionBenchmark](https://github.com/adrienpetralia/ApplianceDetectionBenchmark) to see for reproduce the experiments, where an extensive evaluation of different classifiers have been tested.
 
