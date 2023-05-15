@@ -6,5 +6,5 @@
 #SBATCH -o ./job_outputs/TransAppClf.out
 #SBATCH -e ./job_outputs/TransAppClf.err
 
-. /projets/datascience_retd/dist/miniconda37/bin/activate pytorch-1.8
+. /env/activate myenv
 python3 RunTransAppClassif.py $1 $2 $3 $4
