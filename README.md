@@ -14,8 +14,7 @@
 
 ## References
 > Adrien Petralia, Philippe Charpentier, Themis Palpanas. ADF & TransApp:
-> A Transformer-Based Framework for Appliance Detection Using Smart Meter
-Consumption Series.
+> A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series.
 > Proceedings of the VLDB Endowment (PVLDB) Journal, 2024
 
 ## Getting Started
