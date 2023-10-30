@@ -62,7 +62,7 @@ You may find more information on how to access the datasets in the [data](https:
 ### Appliance Detection Framework
 Overview of our proposed Appliance Detection Framework.
 <p align="center">
-    <img width="700" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
+    <img width="650" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
 </p>
 
 ### TransApp architecture
