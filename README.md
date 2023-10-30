@@ -65,10 +65,16 @@ Overview of our proposed Appliance Detection Framework.
     <img width="650" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
 </p>
 
-### TransApp Classifier
+### TransApp architecture
 Overview of our proposed TransApp time series classifier.
 <p align="center">
     <img width="600" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png" alt="TransAppModel image">
+</p>
+
+### Two steps training process architecture
+Improving appliance quality detection with a pretraining step using non-labeled data.
+<p align="center">
+    <img width="600" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Training.png" alt="Two-steps training image">
 </p>
 
 ## Experiments
