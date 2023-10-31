@@ -74,7 +74,7 @@ Overview of our proposed TransApp time series classifier.
 ### Two steps training process architecture
 Improving appliance quality detection with a pretraining step using non-labeled data.
 <p align="center">
-    <img width="450" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Training.png" alt="Two-steps training image">
+    <img width="400" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Training.png" alt="Two-steps training image">
 </p>
 
 ## Experiments
