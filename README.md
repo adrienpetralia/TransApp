@@ -57,21 +57,24 @@ The data used in this project comes from two sources:
 
 You may find more information on how to access the datasets in the [data](https://github.com/adrienpetralia/TransApp/tree/main/data) folder.
 
-## Architecture Overview
+## Proposed approach
 
 ### Appliance Detection Framework
-Overview of our proposed Appliance Detection Framework.
+We propose the Appliance Detection Framework (ADF) to detect the presence of appliances in households, using real-world consumption
+series, which are sampled at a very low frequency, and are long and variable-length. ADF addresses these challenges by operating at individual subsequences of each consumption series, instead of each series in its entirety.
 <p align="center">
     <img width="650" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
 </p>
 
-### TransApp architecture
-Overview of our proposed TransApp time series classifier.
+### TransApp
+We propose TransApp, a Transformer-based time series classifier, which can first be pretrained in a self-supervised manner to enhance its ability on appliances detection tasks. This way, TransApp can significantly improve its accuracy.
+
+#### Model architecture
 <p align="center">
     <img width="650" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png" alt="TransAppModel image">
 </p>
 
-### Two steps training process architecture
+#### Two steps training process
 Improving appliance quality detection with a pretraining step using non-labeled data.
 <p align="center">
     <img width="400" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Training.png" alt="Two-steps training image">
