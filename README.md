@@ -60,8 +60,7 @@ You may find more information on how to access the datasets in the [data](https:
 ## Proposed approach
 
 ### Appliance Detection Framework
-We propose the Appliance Detection Framework (ADF) to detect the presence of appliances in households, using real-world consumption
-series, which are sampled at a very low frequency, and are long and variable-length. ADF addresses these challenges by operating at individual subsequences of each consumption series, instead of each series in its entirety.
+We propose the Appliance Detection Framework (ADF) to detect the presence of appliances in households, using real-world consumption series, which are sampled at a very low frequency, and are long and variable-length. ADF addresses these challenges by operating at individual subsequences of each consumption series, instead of each series in its entirety. The framework can be used with any time series classifier designed to predict probabilities.
 <p align="center">
     <img width="650" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Framework.png" alt="Framework image">
 </p>
@@ -70,12 +69,13 @@ series, which are sampled at a very low frequency, and are long and variable-len
 We propose TransApp, a Transformer-based time series classifier, which can first be pretrained in a self-supervised manner to enhance its ability on appliances detection tasks. This way, TransApp can significantly improve its accuracy.
 
 #### Model architecture
+The proposed architecture lies in combination of a strong embedding block made of dilated convolutional layers followed by a Transformer encoder using Diagonally Masked Self-Attention (DMSA).
 <p align="center">
     <img width="650" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/all_model.png" alt="TransAppModel image">
 </p>
 
 #### Two steps training process
-Improving appliance quality detection with a pretraining step using non-labeled data.
+We proposed a mask-based reconstruction pretraining using non-labeled data to improve appliance quality detection.
 <p align="center">
     <img width="400" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Training.png" alt="Two-steps training image">
 </p>
