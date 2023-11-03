@@ -75,7 +75,10 @@ The proposed architecture lies in combination of a strong embedding block made o
 </p>
 
 #### Two steps training process
-We proposed a mask-based reconstruction pretraining using non-labeled data to improve appliance quality detection.
+**Self-supervised pretraining.** The use of a self-supervised pretraining of a Transformer architecture on an auxiliary task has been used in the past to boost the model performance on downstream tasks. This process is inspired by the mask-based pretraining of vision transformer and requires only the input consumption series without any appliance information label. It results in a reconstruction objective of a corrupted (masked) time series fed to the model input.
+
+**Supervised pretraining.** The supervised training results in a simple binary classification process using labeled time series.
+
 <p align="center">
     <img width="400" src="https://github.com/adrienpetralia/TransApp/blob/master/ressources/Training.png" alt="Two-steps training image">
 </p>
