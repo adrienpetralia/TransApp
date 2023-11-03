@@ -136,12 +136,12 @@ class ResNetAtt(nn.Module):
             
         self.att_network = torch.nn.Sequential(*layers)
         
-        self.linear1 = nn.LazyLinear(d_ff)
-        self.linear2 = nn.Linear(d_ff, nb_class)
+        self.linear1 = nn.LazyLinear(d_ff, bias=False) # According to paper detail 500 * 100 = 50 000 parameters so no bias
+        self.linear2 = nn.LazyLinear(nb_class)
 
     def forward(self, x) -> torch.Tensor:
         x = self.res_network(x)
         x = self.att_network(x)
-        x = F.relu(self.linear1(torch.flatten(x, 1)))
+        x = F.relu(self.linear1(x))
 
-        return self.linear2(x)
+        return self.linear2(torch.flatten(x, 1))
