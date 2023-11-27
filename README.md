@@ -15,9 +15,10 @@
 #### ✨ **News:** This work has been accepted for publication in the [50th International Conference on Very Large Databases (VLDB 2024)](https://vldb.org/2024/).
 
 ## References
-> Adrien Petralia, Philippe Charpentier, Themis Palpanas. ADF & TransApp:
+> Adrien Petralia, Philippe Charpentier, and Themis Palpanas. ADF & TransApp:
 > A Transformer-Based Framework for Appliance Detection Using Smart Meter Consumption Series.
-> Proceedings of the VLDB Endowment (PVLDB) Journal, 2024
+> Proceedings of the VLDB Endowment (PVLDB), 17(3): 553 - 562, 2023.
+> doi:10.14778/3632093.363211
 
 ## Getting Started
 
