@@ -12,7 +12,7 @@
 </p>
 </div>
 
-#### ✨ **News:** This work has been accepted for publication in the [50th International Conference on Very Large Databases (VLDB 2024)](https://vldb.org/2024/).
+#### ✨ **News:** This work has been accepted for publication in the [Proceeding of VLDB endownment](https://www.vldb.org/pvldb/volumes/17) and will appear in the [50th International Conference on Very Large Databases (VLDB 2024)](https://vldb.org/2024/).
 
 ## References
 > Adrien Petralia, Philippe Charpentier, and Themis Palpanas. ADF & TransApp:
