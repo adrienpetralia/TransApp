@@ -1,0 +1,9 @@
+data/Inputs/
+data/Labels/
+data/ExogeneData/
+tmp/
+
+*.csv
+*.pyc
+**/__pycache__/
+**/.ipynb_checkpoints/
