@@ -20,50 +20,6 @@
 > Proceedings of the VLDB Endowment (PVLDB), 17(3): 553 - 562, 2023.
 > doi:10.14778/3632093.363211
 
-## Contributors
-
-* [Adrien Petralia](https://adrienpetralia.github.io/), EDF R&D, Université Paris Cité
-* [Philippe Charpentier](https://www.researchgate.net/profile/Philippe-Charpentier), EDF R&D
-* [Themis Palpanas](https://helios2.mi.parisdescartes.fr/~themisp/), Université Paris Cité, IUF
-
-
-## Getting Started
-
-### Prerequisites 
-
-Python version : <code> >= Python 3.7 </code>
-
-Overall, the required python packages are listed as follows:
-
-<ul>
-    <li><a href="https://numpy.org/">numpy</a></li>
-    <li><a href="https://pandas.pydata.org/">pandas</a></li>
-    <li><a href="https://scikit-learn.org/stable/">scikit-learn</a></li>
-    <li><a href="https://imbalanced-learn.org/stable/">imbalanced-learn</a></li>
-    <li><a href="https://pytorch.org/docs/1.8.1/">torch==1.8.1</a></li>
-    <li><a href="https://pypi.org/project/torchinfo/0.0.1/">torchinfo</a></li>
-    <li><a href="https://scipy.org/">scipy</a></li>
-    <li><a href="http://www.sktime.net/en/latest/">sktime</a></li>
-    <li><a href="https://matplotlib.org/">matplotlib</a></li>
-</ul>
-
-### Installation
-
-Use pip to install all the required libraries listed in the requirements.txt file.
-
-```
-pip install -r requirements.txt
-```
-
-### Data
-The data used in this project comes from two sources:
-
-<ul>
-  <li>CER smart meter dataset from the ISSDA archive.</li>
-  <li>Private smart meter dataset provide by EDF (Electricité De France).</li>
-</ul> 
-
-You may find more information on how to access the datasets in the [data](https://github.com/adrienpetralia/TransApp/tree/main/data) folder.
 
 ## Proposed approach
 
@@ -127,6 +83,51 @@ sh LaunchModelsClassif.sh
 
 Please refer to this Github [ApplianceDetectionBenchmark](https://github.com/adrienpetralia/ApplianceDetectionBenchmark) to reproduce the experiments, where an extensive evaluation of different time series classifiers have been conducted, inluding on the datasets used in this study.
 
+
+## Getting Started
+
+### Prerequisites 
+
+Python version : <code> >= Python 3.7 </code>
+
+Overall, the required python packages are listed as follows:
+
+<ul>
+    <li><a href="https://numpy.org/">numpy</a></li>
+    <li><a href="https://pandas.pydata.org/">pandas</a></li>
+    <li><a href="https://scikit-learn.org/stable/">scikit-learn</a></li>
+    <li><a href="https://imbalanced-learn.org/stable/">imbalanced-learn</a></li>
+    <li><a href="https://pytorch.org/docs/1.8.1/">torch==1.8.1</a></li>
+    <li><a href="https://pypi.org/project/torchinfo/0.0.1/">torchinfo</a></li>
+    <li><a href="https://scipy.org/">scipy</a></li>
+    <li><a href="http://www.sktime.net/en/latest/">sktime</a></li>
+    <li><a href="https://matplotlib.org/">matplotlib</a></li>
+</ul>
+
+### Installation
+
+Use pip to install all the required libraries listed in the requirements.txt file.
+
+```
+pip install -r requirements.txt
+```
+
+### Data
+The data used in this project comes from two sources:
+
+<ul>
+  <li>CER smart meter dataset from the ISSDA archive.</li>
+  <li>Private smart meter dataset provide by EDF (Electricité De France).</li>
+</ul> 
+
+You may find more information on how to access the datasets in the [data](https://github.com/adrienpetralia/TransApp/tree/main/data) folder.
+
+
+## Contributors
+
+* [Adrien Petralia](https://adrienpetralia.github.io/), EDF R&D, Université Paris Cité
+* [Philippe Charpentier](https://www.researchgate.net/profile/Philippe-Charpentier), EDF R&D
+* [Themis Palpanas](https://helios2.mi.parisdescartes.fr/~themisp/), Université Paris Cité, IUF
 
 ## Acknowledgments
 
