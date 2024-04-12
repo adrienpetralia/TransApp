@@ -131,5 +131,4 @@ Please refer to this Github [ApplianceDetectionBenchmark](https://github.com/adr
 ## Acknowledgments
 
 We would like to thanks [Paul Boniol](https://boniolp.github.io/) for the valuable discussions on this project.
-
 Work supported by EDF R&D and ANRT French program.
