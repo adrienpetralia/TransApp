@@ -20,6 +20,13 @@
 > Proceedings of the VLDB Endowment (PVLDB), 17(3): 553 - 562, 2023.
 > doi:10.14778/3632093.363211
 
+## Contributors
+
+* [Adrien Petralia](https://adrienpetralia.github.io/), EDF R&D, Université Paris Cité
+* [Philippe Charpentier](https://www.researchgate.net/profile/Philippe-Charpentier), EDF R&D
+* [Themis Palpanas](https://helios2.mi.parisdescartes.fr/~themisp/), Université Paris Cité, IUF
+
+
 ## Getting Started
 
 ### Prerequisites 
@@ -120,3 +127,9 @@ sh LaunchModelsClassif.sh
 
 Please refer to this Github [ApplianceDetectionBenchmark](https://github.com/adrienpetralia/ApplianceDetectionBenchmark) to reproduce the experiments, where an extensive evaluation of different time series classifiers have been conducted, inluding on the datasets used in this study.
 
+
+## Acknowledgments
+
+We would like to thanks [Paul Boniol](https://boniolp.github.io/) for the valuable discussions on this project.
+
+Work supported by EDF R&D and ANRT French program.
