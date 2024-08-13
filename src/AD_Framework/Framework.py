@@ -838,7 +838,7 @@ class AD_Framework(BasedClassifTrainer):
                     # ====================forward==================== #
                     logits = self.model(ts)
                     logits = nn.Softmax(dim=1)(logits)
-                    if logits_proba:
+                    if not logits_proba:
                         logits_proba = list(logits[:, 1].cpu().detach().numpy().ravel())
                     else:
                         logits_proba = logits_proba + list(logits[:, 1].cpu().detach().numpy().ravel())
@@ -896,7 +896,7 @@ class AD_Framework(BasedClassifTrainer):
                     # ====================forward==================== #
                     logits = self.model(ts)
                     logits = nn.Softmax(dim=1)(logits)
-                    if logits_proba:
+                    if not logits_proba:
                         logits_proba = list(logits[:, 1].cpu().detach().numpy().ravel())
                     else:
                         logits_proba = logits_proba + list(logits[:, 1].cpu().detach().numpy().ravel())
